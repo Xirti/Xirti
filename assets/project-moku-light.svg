@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="248" viewBox="0 0 1200 248" role="img" aria-labelledby="title desc">
+<title id="title">MOKU — a Windows app for finding, collecting and saving Pixiv artwork</title>
+<desc id="desc">An original silver and graphite profile panel for Xirti / Aperia.</desc>
+<defs>
+  <linearGradient id="surface" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7f9fc"/><stop offset=".43" stop-color="#eef1f5"/><stop offset="1" stop-color="#e2e7ed"/></linearGradient>
+  <linearGradient id="chrome" x1="0" y1="0" x2=".2" y2="1"><stop offset="0" stop-color="#566577"/><stop offset=".3" stop-color="#77879a"/><stop offset=".47" stop-color="#3d4b5e"/><stop offset=".51" stop-color="#f8fcff"/><stop offset=".58" stop-color="#91a1b4"/><stop offset="1" stop-color="#3c4b60"/></linearGradient>
+  <linearGradient id="reflection"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".45" stop-color="#e1e8f0" stop-opacity=".12"/><stop offset=".5" stop-color="#fff" stop-opacity=".75"/><stop offset=".56" stop-color="#e1e8f0" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  <pattern id="brush" width="8" height="4" patternUnits="userSpaceOnUse"><path d="M0 .5H8" stroke="#ffffff" stroke-opacity=".12" stroke-width=".6"/><path d="M0 2.5H8" stroke="#b2becc" stroke-opacity=".07" stroke-width=".5"/></pattern>
+  <clipPath id="panel"><path d="M19 1H1180L1199 20V228L1180 247H20L1 228V20Z"/></clipPath>
+  
+</defs>
+<style>
+  text { font-family: 'Segoe UI', Arial, sans-serif; }
+  .mono { font-family: Consolas, 'Liberation Mono', monospace; }
+  .ink { fill: #293444; } .muted { fill: #607084; }
+  .line { fill: none; stroke: #b2becc; }
+  
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+</style>
+<path d="M19 1H1180L1199 20V228L1180 247H20L1 228V20Z" fill="url(#surface)" stroke="#bbc5d1"/>
+<g clip-path="url(#panel)">
+<rect width="1200" height="248" fill="url(#brush)"/>
+
+<text x="40" y="34" class="mono muted" font-size="11" letter-spacing="2">01 / DESKTOP SOFTWARE</text>
+<text x="39" y="130" class="ink" font-size="94" font-weight="650" letter-spacing="-4">MOKU</text>
+<text x="44" y="171" class="mono muted" font-size="14" letter-spacing="2.6">PIXIV ARTWORK BROWSER</text>
+<path d="M44 201H550" class="line" stroke-opacity=".6"/>
+<text x="44" y="224" class="mono muted" font-size="10" letter-spacing="1.4">PIXIV BROWSER / LOCAL LIBRARY / WINDOWS</text>
+<path d="M726 58H1040M744 207H1127" class="line" stroke-dasharray="2 5" opacity=".7"/>
+<g transform="translate(784 53) rotate(-8 90 72)"><rect width="178" height="139" rx="5" fill="#e2e7ed" stroke="#b2becc"/><path d="M12 24H165M19 12H40" class="line"/><path d="M22 113 62 60 90 88 112 70 156 113Z" fill="#b2becc" opacity=".24"/><circle cx="129" cy="47" r="10" fill="#607084" opacity=".3"/></g>
+<g transform="translate(879 46) rotate(8 90 72)"><rect width="178" height="139" rx="5" fill="#f7f9fc" stroke="#bbc5d1"/><path d="M12 24H165M19 12H40" class="line"/><path d="M20 114 69 51 91 90 118 63 158 114Z" fill="#b2becc" opacity=".22"/><path d="M101 43H145M136 35V51" class="line"/></g>
+<g transform="translate(977 97)"><rect width="115" height="109" rx="5" fill="url(#surface)" stroke="#bbc5d1"/><path d="M57 19V75M29 47H85M38 28 76 66M38 66 76 28" stroke="#607084" stroke-opacity=".55"/><circle cx="57" cy="47" r="15" fill="#f7f9fc" stroke="#607084"/><path d="M15 92H100" class="line"/></g>
+<path d="M1151 28H1170V47M1151 220H1170V201" class="line"/>
+
+</g>
+</svg>

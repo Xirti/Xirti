@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="580" height="230" viewBox="0 0 580 230" role="img" aria-labelledby="title desc">
+<title id="title">BiliLocal — a local-first Bilibili video downloader</title>
+<desc id="desc">An original silver and graphite profile panel for Xirti / Aperia.</desc>
+<defs>
+  <linearGradient id="surface" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7f9fc"/><stop offset=".43" stop-color="#eef1f5"/><stop offset="1" stop-color="#e2e7ed"/></linearGradient>
+  <linearGradient id="chrome" x1="0" y1="0" x2=".2" y2="1"><stop offset="0" stop-color="#566577"/><stop offset=".3" stop-color="#77879a"/><stop offset=".47" stop-color="#3d4b5e"/><stop offset=".51" stop-color="#f8fcff"/><stop offset=".58" stop-color="#91a1b4"/><stop offset="1" stop-color="#3c4b60"/></linearGradient>
+  <linearGradient id="reflection"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".45" stop-color="#e1e8f0" stop-opacity=".12"/><stop offset=".5" stop-color="#fff" stop-opacity=".75"/><stop offset=".56" stop-color="#e1e8f0" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  <pattern id="brush" width="8" height="4" patternUnits="userSpaceOnUse"><path d="M0 .5H8" stroke="#ffffff" stroke-opacity=".12" stroke-width=".6"/><path d="M0 2.5H8" stroke="#b2becc" stroke-opacity=".07" stroke-width=".5"/></pattern>
+  <clipPath id="panel"><path d="M19 1H560L579 20V210L560 229H20L1 210V20Z"/></clipPath>
+  
+</defs>
+<style>
+  text { font-family: 'Segoe UI', Arial, sans-serif; }
+  .mono { font-family: Consolas, 'Liberation Mono', monospace; }
+  .ink { fill: #293444; } .muted { fill: #607084; }
+  .line { fill: none; stroke: #b2becc; }
+  
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+</style>
+<path d="M19 1H560L579 20V210L560 229H20L1 210V20Z" fill="url(#surface)" stroke="#bbc5d1"/>
+<g clip-path="url(#panel)">
+<rect width="580" height="230" fill="url(#brush)"/>
+
+<text x="28" y="31" class="mono muted" font-size="10" letter-spacing="1.6">02 / LOCAL UTILITY</text>
+<text x="25" y="112" class="ink" font-size="55" font-weight="650" letter-spacing="-2">BiliLocal</text>
+<text x="29" y="151" class="mono muted" font-size="11" letter-spacing="1.2">VIDEO → LOCAL LIBRARY</text>
+<path d="M29 182H327" class="line"/>
+<text x="29" y="207" class="mono muted" font-size="9" letter-spacing="1.3">PYTHON / BATCH DOWNLOADS</text>
+<g transform="translate(462 117)">
+  <circle r="61" fill="#f7f9fc" stroke="#b2becc"/>
+  <circle r="16" fill="#e2e7ed" stroke="#b2becc"/>
+  <g fill="#e2e7ed" stroke="#b2becc"><circle cx="0" cy="-38" r="11"/><circle cx="36" cy="-12" r="11"/><circle cx="22" cy="31" r="11"/><circle cx="-22" cy="31" r="11"/><circle cx="-36" cy="-12" r="11"/></g>
+  <path d="M-19 58H57L69 71H96" class="line"/>
+</g>
+
+</g>
+</svg>
