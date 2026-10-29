@@ -1,0 +1,93 @@
+name: Silver contribution snake
+
+on:
+  schedule:
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/snake.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: silver-snake-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+
+      - name: Generate silver snake in both themes
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            assets/snake-light.svg?color_snake=#697b91&color_dots=#edf0f4,#cbd4df,#a3b1c2,#74869d,#465a73
+            assets/snake-dark.svg?color_snake=#edf3fc&color_dots=#1b232e,#3b485a,#62758e,#a4b5cc,#e1eaf6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Add safe space around the full animated route
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+
+          SVG = "http://www.w3.org/2000/svg"
+          ET.register_namespace("", SVG)
+
+
+          def pad_snake(path):
+              root = ET.parse(path).getroot()
+              if root.get("data-safe-padding") == "32":
+                  print(f"{path.name}: safe padding is already present")
+                  return
+              view_box = [float(value) for value in root.get("viewBox", "").split()]
+              if root.tag != f"{{{SVG}}}svg" or len(view_box) != 4 or view_box[2] <= 0 or view_box[3] <= 0:
+                  raise ValueError(f"{path}: expected a generated SVG with a valid viewBox")
+              left, top, width, height = view_box
+              left -= 32
+              top -= 32
+              width += 64
+              height += 64
+              root.set("viewBox", " ".join(f"{value:g}" for value in [left, top, width, height]))
+              root.set("width", f"{width:g}")
+              root.set("height", f"{height:g}")
+              root.set("data-safe-padding", "32")
+              root.set("role", "img")
+              dark = path.stem.endswith("dark")
+              frame = ET.Element(f"{{{SVG}}}rect", {
+                  "x": f"{left + 1:g}", "y": f"{top + 1:g}",
+                  "width": f"{width - 2:g}", "height": f"{height - 2:g}",
+                  "rx": "7", "fill": "#151d28" if dark else "#f8fafc",
+                  "stroke": "#3c4b5f" if dark else "#c4ceda", "stroke-width": "1",
+              })
+              root.insert(0, frame)
+              reduced_motion = ET.SubElement(root, f"{{{SVG}}}style")
+              reduced_motion.text = "@media(prefers-reduced-motion:reduce){*{animation:none!important}}"
+              path.write_text(ET.tostring(root, encoding="unicode"), encoding="utf-8")
+              print(f"{path.name}: added 32px padding around the full snake canvas")
+
+
+          paths = sorted(Path("assets").glob("snake-*.svg"))
+          if not paths:
+              raise FileNotFoundError("No contribution snake SVGs were generated")
+          for path in paths:
+              pad_snake(path)
+          PY
+
+      - name: Save refreshed contribution images
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/snake-light.svg assets/snake-dark.svg
+          if git diff --cached --quiet; then
+            echo 'Contribution images are already current.'
+            exit 0
+          fi
+          git commit -m 'Update silver contribution snake'
+          git push
